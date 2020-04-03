@@ -33,9 +33,9 @@
 
         <div class="collapse navbar-collapse navbar-right">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
+            <li class="active"><a href="/">HOME</a></li>
            
-            <li><a href="/signup">Sign Up</a></li> 
+            <li><a href="/signup">LOGIN</a></li> 
             
           </ul>
         </div>
@@ -66,7 +66,7 @@
                     <h2 class="title">CREATE ACCOUNT</h2>
                 </div>
                 <div class="card-body">
-                    <form action = "/signup" method="GET">
+                    <form action = "/users/create" method="POST">
                         <div class="form-row m-b-55">
                             <div class="name">Name</div>
                             <div class="value">
@@ -112,31 +112,9 @@
                             </div>
                         </div>
 
-                        <div class="form-row">
-                            <div class="name">Confirm Password</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-5" type="password" name="pass">
-                                </div>
-                            </div>
-                        </div>
+                       
 
-                        <div class="form-row m-b-55">
-                            <div class="name">Phone</div>
-                            <div class="value">
-                                <div class="row row-refine">
-                                    
-                                    <div class="col-9">
-                                        <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="phone">
-                                            <label class="label--desc">Phone Number</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div>
+                           <div>
                             <button class="btn btn--radius-2 btn--green" type="submit">
                            Register
                             </button>                        
@@ -209,6 +187,16 @@
   <script src="js/jquery.isotope.min.js"></script>
   <script src="js/wow.min.js"></script>
   <script src="js/main.js"></script>
+
+  <script src = "http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src = "http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script>
+      $(document).ready(function() {
+         function disablePrev() { window.history.forward() }
+         window.onload = disablePrev();
+         window.onpageshow = function(evt) { if (evt.persisted) disableBack() }
+      });
+   </script>
 
 </body>
 

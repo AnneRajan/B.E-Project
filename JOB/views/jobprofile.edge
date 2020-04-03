@@ -21,7 +21,8 @@
 
         
       <div class="container text-center text-center">
-            <form action="/posts/store" method="POST" class="form-horizontal" role="form">
+            <form action = "/posts/jobprofile" method="POST" >
+            <div class="form-horizontal" role="form">
               <center></center>
 
                
@@ -29,7 +30,7 @@
                 <div class="form-group">
                     <label for="os" class="col-sm-3 control-label">Operating System</label>
                     <div class="col-sm-4">
-                        <input type="Number" min="0" max="100" id="os" placeholder="Operating System %" class="form-control" autofocus required>
+                        <input type="Number" min="0" max="100" name="os" placeholder="Operating System %" class="form-control" autofocus required>
                        
                     </div>
                 </div>
@@ -37,7 +38,7 @@
                 <div class="form-group">
                     <label for="aoa" class="col-sm-3 control-label">Analysis of Algorithm</label>
                     <div class="col-sm-4">
-                        <input type="Number" min="0" max="100" id="aoa" placeholder="Analysis of Algorithm %" class="form-control" autofocus required>
+                        <input type="Number" min="0" max="100" name="aoa" placeholder="Analysis of Algorithm %" class="form-control" autofocus required>
                        
                     </div>
                 </div>
@@ -45,7 +46,7 @@
                 <div class="form-group">
                     <label for="pc" class="col-sm-3 control-label">Programming Concept</label>
                     <div class="col-sm-4">
-                        <input type="Number" min="0" max="100" id="pc" placeholder="Avg of Java and Python %" class="form-control" autofocus required>
+                        <input type="Number" min="0" max="100" name="pc" placeholder="Avg of Java and Python %" class="form-control" autofocus required>
                        
                     </div>
                 </div>
@@ -53,7 +54,7 @@
                 <div class="form-group">
                     <label for="se" class="col-sm-3 control-label">Software Engineering</label>
                     <div class="col-sm-4">
-                        <input type="Number" min="0" max="100" id="se" placeholder="Software Engineering %" class="form-control" autofocus required>
+                        <input type="Number" min="0" max="100" name="se" placeholder="Software Engineering %" class="form-control" autofocus required>
                        
                     </div>
                 </div>
@@ -61,7 +62,7 @@
                 <div class="form-group">
                     <label for="cn" class="col-sm-3 control-label">Computer Network</label>
                     <div class="col-sm-4">
-                        <input type="Number" min="0" max="100" id="cn" placeholder="Computer Network %" class="form-control" autofocus required>
+                        <input type="Number" min="0" max="100" name="cn" placeholder="Computer Network %" class="form-control" autofocus required>
                        
                     </div>
                 </div>
@@ -69,7 +70,7 @@
                 <div class="form-group">
                     <label for="ma" class="col-sm-3 control-label">Applied Mathematics</label>
                     <div class="col-sm-4">
-                        <input type="Number" min="0" max="100" id="ma" placeholder="Avg % of M1, M2, M3 and M4" class="form-control" autofocus required>
+                        <input type="Number" min="0" max="100" name="ma" placeholder="Avg % of M1, M2, M3 and M4" class="form-control" autofocus required>
                        
                     </div>
                 </div>
@@ -77,7 +78,7 @@
                 <div class="form-group">
                     <label for="cs" class="col-sm-3 control-label">Computer Security</label>
                     <div class="col-sm-4">
-                        <input type="Number" min="0" max="100" id="cs" placeholder="Computer Security %" class="form-control" autofocus required>
+                        <input type="Number" min="0" max="100" name="cs" placeholder="Computer Security %" class="form-control" autofocus required>
                        
                     </div>
                 </div>
@@ -87,16 +88,17 @@
                  <div class="form-group">
                     <label for="hac" class="col-sm-3 control-label">Hackathons attended</label>
                     <div class="col-sm-4">
-                        <input type="Number" min="0" max="10" id="hac" placeholder="No. of Hackathons attended" class="form-control" autofocus required>
+                        <input type="Number" min="0" max="10" name="hac" placeholder="No. of Hackathons attended" class="form-control" autofocus required>
                        
                     </div>
                 </div>
 
 
+                
                  <div class="form-group">
                     <label for="type" class="col-sm-3 control-label">Interest</label>
                     <div class="col-sm-4">
-                        <select id="Select" class="form-control">
+                        <select name="select"  class="form-control">
                             <option>Analyst</option>
                             <option>Management</option>
                             <option>Hadoop</option>
@@ -124,31 +126,31 @@
                             <div class="col-sm-">
 
                                 <label class="radio-inline">
-                                    <input type="checkbox" id="fs" value="Full Stack">Full Stack
+                                    <input type="checkbox" name="cert" value="Full Stack">Full Stack
                                 </label>
                                 
                                 <label class="radio-inline">
-                                    <input type="checkbox" id="python" value="Python">Python
+                                    <input type="checkbox" name="cert" value="Python">Python
                                 </label>
                                   
                                  <label class="radio-inline">
-                                    <input type="checkbox" id="sh" value="Shell Programming">Shell Programming
+                                    <input type="checkbox" name="cert" value="Shell Programming">Shell Programming
                                 </label>
 
                                  <label class="radio-inline">
-                                    <input type="checkbox" id="ml" value="Machine Learning">Machine Learning
+                                    <input type="checkbox" name="cert" value="Machine Learning">Machine Learning
                                 </label>
 								
                                <label class="radio-inline">
-                                    <input type="checkbox" i="is" value="Information Security">Information Security
+                                    <input type="checkbox" name="cert" value="Information Security">Information Security
                                 </label>
 
                                 <label class="radio-inline">
-                                    <input type="checkbox" id="ad" value="App Development">App Development
+                                    <input type="checkbox" name="cert" value="App Development">App Development
                                 </label>
                                 
                                 <label class="radio-inline">
-                                    <input type="checkbox" id="hadoop" value="Hadoop">Hadoop
+                                    <input type="checkbox" name="cert" value="Hadoop">Hadoop
                                 </label> 
 
                             </div>
@@ -163,10 +165,10 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline">
-                                    <input type="radio" id="introvert" value="introvert">Introvert
+                                    <input type="radio" name="personality" value="introvert">Introvert
                                 </label>
 								<label class="radio-inline">
-                                    <input type="radio" id="extrovert" value="Extrovert">Extrovert
+                                    <input type="radio" name="personality" value="Extrovert">Extrovert
                                 </label>
                             </div>
                            
@@ -182,10 +184,10 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline">
-                                    <input type="radio" id="Yes" value="Yes">Yes
+                                    <input type="radio" name="management" value="Yes">Yes
                                 </label>
 								<label class="radio-inline">
-                                    <input type="radio" id="No" value="No">No
+                                    <input type="radio" name="management" value="No">No
                                 </label>
                             </div>
                            
@@ -200,10 +202,10 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline">
-                                    <input type="radio" id="Yes" value="Yes">Yes
+                                    <input type="radio" name="leadership" value="Yes">Yes
                                 </label>
 								<label class="radio-inline">
-                                    <input type="radio" id="No" value="No">No
+                                    <input type="radio" name="leadership" value="No">No
                                 </label>
                             </div>
                            
@@ -217,10 +219,10 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline">
-                                    <input type="radio" id="Yes" value="Yes">Yes
+                                    <input type="radio" name="team" value="Yes">Yes
                                 </label>
 								<label class="radio-inline">
-                                    <input type="radio" id="No" value="No">No
+                                    <input type="radio" name="team" value="No">No
                                 </label>
                             </div>
                            
@@ -236,10 +238,10 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline">
-                                    <input type="radio" id="Yes" value="Yes">Yes
+                                    <input type="radio" name="selfability" value="Yes">Yes
                                 </label>
 								<label class="radio-inline">
-                                    <input type="radio" id="No" value="No">No
+                                    <input type="radio" name="selfability" value="No">No
                                 </label>
                             </div>
                            
@@ -247,23 +249,7 @@
                         </div>
                     </div>
 
-                     <div class="form-group">
-                    <label class="control-label col-sm-3">Management</label>
-                    <div class="col-sm-6">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <label class="radio-inline">
-                                    <input type="radio" id="Yes" value="Yes">Yes
-                                </label>
-								<label class="radio-inline">
-                                    <input type="radio" id="No" value="No">No
-                                </label>
-                            </div>
-                           
-                            </div>    
-                        </div>
-                    </div>
-
+                    
 
                      <div class="form-group">
                     <label class="control-label col-sm-3">Technical</label>
@@ -271,18 +257,19 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline">
-                                    <input type="radio" id="Yes" value="Yes">Yes
+                                    <input type="radio" name="technical" value="Yes">Yes
                                 </label>
 								<label class="radio-inline">
-                                    <input type="radio" id="No" value="No">No
+                                    <input type="radio" name="technical" value="No">No
                                 </label>
                             </div>
                            
                             </div>    
                         </div>
-                    </div>
                 
                 
+
+
 
 
                     <div class="form-group">
@@ -291,7 +278,10 @@
                     </div>
                 </div>
 
-                   
+
+
+{{prediction_text}}
+                   </div>
             </form> <!-- /form -->
         </div> <!-- ./container -->
 		

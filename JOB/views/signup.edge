@@ -37,9 +37,9 @@
 					<img src="loginfront/images/img-01.png" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form">
+				<form action="/users/signup" method="POST" class="login100-form validate-form">
 					<span class="login100-form-title">
-						Sign in
+						Login here
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
@@ -60,7 +60,7 @@
 					
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
-							<a href ="/jobprofile"> Login</a>
+							 Login
 						</button>
 					</div>
 
@@ -148,6 +148,17 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="loginfront/js/main.js"></script>
+
+
+<script src = "http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src = "http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script>
+      $(document).ready(function() {
+         function disablePrev() { window.history.forward() }
+         window.onload = disablePrev();
+         window.onpageshow = function(evt) { if (evt.persisted) disableBack() }
+      });
+   </script>
 
 </body>
 </html>
