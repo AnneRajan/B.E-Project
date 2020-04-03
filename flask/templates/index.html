@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JOB-ROLE-PREDICTION</title>
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link href="css/animate.min.css" rel="stylesheet">
+  <link href="css/prettyPhoto.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+
+</head>
+
+<body class="homepage">
+  <header id="header">
+    <nav class="navbar navbar-fixed-top" role="banner">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+          <a class="navbar-brand" href="/">Find Better..</a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-right">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/">HOME</a></li>
+            <li><a href="/jobprofile">JOB PROFILE</a></li>
+            <li><a href="/pages/frames.html"  target="_blank">SKILLS</a></li>
+           
+            <li><a href="/pages/resume.html" target="_blank" >Resume Builder</a></li>
+            <li><a href="/signup">LOGIN</a></li> 
+            
+          </ul>
+        </div>
+      </div>
+      <!--/.container-->
+    </nav>
+    <!--/nav-->
+
+
+  </header>
+
+
+
+<section id="about-us">
+   
+
+ <div class="container">
+
+      <div class="skill-wrap clearfix">
+        <div class="center wow fadeInDown">
+        <br>
+       <br>
+          <h2>Which Job-Profile best suits <span>You??</span></h2>
+          <p class="lead"></p>
+
+          <p>yrawojannrajbhbwnnqklkfldlkg;kskf</p>
+        </div>
+
+        
+      <div class="container text-center text-center">
+           <form action="{{ url_for('predict')}}"method="post">
+            <div class="form-horizontal" role="form">
+              <center></center>
+
+               
+			    
+                <div class="form-group">
+                    <label for="os" class="col-sm-3 control-label">Operating System</label>
+                    <div class="col-sm-4">
+                        <input type="Number" min="0" max="100" name="os" placeholder="Operating System %" class="form-control" autofocus required>
+                       
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="aoa" class="col-sm-3 control-label">Analysis of Algorithm</label>
+                    <div class="col-sm-4">
+                        <input type="Number" min="0" max="100" name="aoa" placeholder="Analysis of Algorithm %" class="form-control" autofocus required>
+                       
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="pc" class="col-sm-3 control-label">Programming Concept</label>
+                    <div class="col-sm-4">
+                        <input type="Number" min="0" max="100" name="pc" placeholder="Avg of Java and Python %" class="form-control" autofocus required>
+                       
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="se" class="col-sm-3 control-label">Software Engineering</label>
+                    <div class="col-sm-4">
+                        <input type="Number" min="0" max="100" name="se" placeholder="Software Engineering %" class="form-control" autofocus required>
+                       
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="cn" class="col-sm-3 control-label">Computer Network</label>
+                    <div class="col-sm-4">
+                        <input type="Number" min="0" max="100" name="cn" placeholder="Computer Network %" class="form-control" autofocus required>
+                       
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ma" class="col-sm-3 control-label">Applied Mathematics</label>
+                    <div class="col-sm-4">
+                        <input type="Number" min="0" max="100" name="ma" placeholder="Avg % of M1, M2, M3 and M4" class="form-control" autofocus required>
+                       
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="cs" class="col-sm-3 control-label">Computer Security</label>
+                    <div class="col-sm-4">
+                        <input type="Number" min="0" max="100" name="cs" placeholder="Computer Security %" class="form-control" autofocus required>
+                       
+                    </div>
+                </div>
+
+               
+
+                 <div class="form-group">
+                    <label for="hac" class="col-sm-3 control-label">Hackathons attended</label>
+                    <div class="col-sm-4">
+                        <input type="Number" min="0" max="10" name="hac" placeholder="No. of Hackathons attended" class="form-control" autofocus required>
+                       
+                    </div>
+                </div>
+
+
+               
+                 <div class="form-group">
+                    <label for="type" class="col-sm-3 control-label">Interest</label>
+                    <div class="col-sm-4">
+                        <select name="select"  class="form-control">
+                            <option>Analyst</option>
+                            <option>Management</option>
+                            <option>Hadoop</option>
+                            <option>Web Development</option>
+                            <option>Testing</option>
+                            <option>Security</option>
+                            <option>Networks</option>
+                            <option>Hacking</option>
+                            <option>System Developer</option>
+                            <option>Software Engineer</option>
+                            <option>Data Engineer</option>
+                            <option>Cloud Computing</option>
+                            <option>Programming</option>
+                            
+                        </select>
+                    </div>
+                </div> 
+
+                
+
+                     <div class="form-group">
+                    <label class="control-label col-sm-3">Certifications</label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-">
+
+                                <label class="radio-inline">
+                                    <input type="checkbox" name="cert" value="Full Stack">Full Stack
+                                </label>
+                                
+                                <label class="radio-inline">
+                                    <input type="checkbox" name="cert" value="Python">Python
+                                </label>
+                                  
+                                 <label class="radio-inline">
+                                    <input type="checkbox" name="cert" value="Shell Programming">Shell Programming
+                                </label>
+
+                                 <label class="radio-inline">
+                                    <input type="checkbox" name="cert" value="Machine Learning">Machine Learning
+                                </label>
+								
+                               <label class="radio-inline">
+                                    <input type="checkbox" name="cert" value="Information Security">Information Security
+                                </label>
+
+                                <label class="radio-inline">
+                                    <input type="checkbox" name="cert" value="App Development">App Development
+                                </label>
+                                
+                                <label class="radio-inline">
+                                    <input type="checkbox" name="cert" value="Hadoop">Hadoop
+                                </label> 
+
+                            </div>
+                            </div> 
+                        </div>
+                    </div>
+
+
+                 <div class="form-group">
+                    <label class="control-label col-sm-3">Personality</label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="radio-inline">
+                                    <input type="radio" name="personality" value="introvert">Introvert
+                                </label>
+								<label class="radio-inline">
+                                    <input type="radio" name="personality" value="Extrovert">Extrovert
+                                </label>
+                            </div>
+                           
+                            </div>    
+                        </div>
+                    </div>
+
+
+                <!-- /.form-group -->
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Management</label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="radio-inline">
+                                    <input type="radio" name="management" value="Yes">Yes
+                                </label>
+								<label class="radio-inline">
+                                    <input type="radio" name="management" value="No">No
+                                </label>
+                            </div>
+                           
+                            </div>    
+                        </div>
+                    </div>
+
+
+                 <div class="form-group">
+                    <label class="control-label col-sm-3">Leadership</label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="radio-inline">
+                                    <input type="radio" name="leadership" value="Yes">Yes
+                                </label>
+								<label class="radio-inline">
+                                    <input type="radio" name="leadership" value="No">No
+                                </label>
+                            </div>
+                           
+                            </div>    
+                        </div>
+                    </div>
+
+                  <div class="form-group">
+                    <label class="control-label col-sm-3">Team</label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="radio-inline">
+                                    <input type="radio" name="team" value="Yes">Yes
+                                </label>
+								<label class="radio-inline">
+                                    <input type="radio" name="team" value="No">No
+                                </label>
+                            </div>
+                           
+                            </div>    
+                        </div>
+                    </div>
+
+              
+
+                    <div class="form-group">
+                    <label class="control-label col-sm-3">Self Ability</label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="radio-inline">
+                                    <input type="radio" name="selfability" value="Yes">Yes
+                                </label>
+								<label class="radio-inline">
+                                    <input type="radio" name="selfability" value="No">No
+                                </label>
+                            </div>
+                           
+                            </div>    
+                        </div>
+                    </div>
+
+                    
+
+                     <div class="form-group">
+                    <label class="control-label col-sm-3">Technical</label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="radio-inline">
+                                    <input type="radio" name="technical" value="Yes">Yes
+                                </label>
+								<label class="radio-inline">
+                                    <input type="radio" name="technical" value="No">No
+                                </label>
+                            </div>
+                           
+                            </div>    
+                        </div>
+                 
+                 <div class="form-group">
+                    <label for="type" class="col-sm-3 control-label">Interest</label>
+                    <div class="col-sm-4">
+                        <select name="select"  class="form-control">
+                            <option>Analyst</option>
+                            <option>Management</option>
+                            <option>Hadoop</option>
+                            <option>Web Development</option>
+                            <option>Testing</option>
+                            <option>Security</option>
+                            <option>Networks</option>
+                            <option>Hacking</option>
+                            <option>System Developer</option>
+                            <option>Software Engineer</option>
+                            <option>Data Engineer</option>
+                            <option>Cloud Computing</option>
+                            <option>Programming</option>
+                            
+                        </select>
+                    </div>
+                </div> 
+
+                
+
+                     <div class="form-group">
+                    <label class="control-label col-sm-3">Certifications</label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-">
+
+                                <label class="radio-inline">
+                                    <input type="checkbox" name="cert" value="Full Stack">Full Stack
+                                </label>
+                                
+                                <label class="radio-inline">
+                                    <input type="checkbox" name="cert" value="Python">Python
+                                </label>
+                                  
+                                 <label class="radio-inline">
+                                    <input type="checkbox" name="cert" value="Shell Programming">Shell Programming
+                                </label>
+
+                                 <label class="radio-inline">
+                                    <input type="checkbox" name="cert" value="Machine Learning">Machine Learning
+                                </label>
+								
+                               <label class="radio-inline">
+                                    <input type="checkbox" name="cert" value="Information Security">Information Security
+                                </label>
+
+                                <label class="radio-inline">
+                                    <input type="checkbox" name="cert" value="App Development">App Development
+                                </label>
+                                
+                                <label class="radio-inline">
+                                    <input type="checkbox" name="cert" value="Hadoop">Hadoop
+                                </label> 
+
+                            </div>
+                            </div> 
+                        </div>
+                    </div>
+
+
+                 <div class="form-group">
+                    <label class="control-label col-sm-3">Personality</label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="radio-inline">
+                                    <input type="radio" name="personality" value="introvert">Introvert
+                                </label>
+								<label class="radio-inline">
+                                    <input type="radio" name="personality" value="Extrovert">Extrovert
+                                </label>
+                            </div>
+                           
+                            </div>    
+                        </div>
+                    </div>
+
+
+                <!-- /.form-group -->
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Management</label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="radio-inline">
+                                    <input type="radio" name="management" value="Yes">Yes
+                                </label>
+								<label class="radio-inline">
+                                    <input type="radio" name="management" value="No">No
+                                </label>
+                            </div>
+                           
+                            </div>    
+                        </div>
+                    </div>
+
+
+                 <div class="form-group">
+                    <label class="control-label col-sm-3">Leadership</label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="radio-inline">
+                                    <input type="radio" name="leadership" value="Yes">Yes
+                                </label>
+								<label class="radio-inline">
+                                    <input type="radio" name="leadership" value="No">No
+                                </label>
+                            </div>
+                           
+                            </div>    
+                        </div>
+                    </div>
+
+                  <div class="form-group">
+                    <label class="control-label col-sm-3">Team</label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="radio-inline">
+                                    <input type="radio" name="team" value="Yes">Yes
+                                </label>
+								<label class="radio-inline">
+                                    <input type="radio" name="team" value="No">No
+                                </label>
+                            </div>
+                           
+                            </div>    
+                        </div>
+                    </div>
+
+              
+
+                    <div class="form-group">
+                    <label class="control-label col-sm-3">Self Ability</label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="radio-inline">
+                                    <input type="radio" name="selfability" value="Yes">Yes
+                                </label>
+								<label class="radio-inline">
+                                    <input type="radio" name="selfability" value="No">No
+                                </label>
+                            </div>
+                           
+                            </div>    
+                        </div>
+                    </div>
+
+                    
+
+                     <div class="form-group">
+                    <label class="control-label col-sm-3">Technical</label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="radio-inline">
+                                    <input type="radio" name="technical" value="Yes">Yes
+                                </label>
+								<label class="radio-inline">
+                                    <input type="radio" name="technical" value="No">No
+                                </label>
+                            </div>
+                           
+                            </div>    
+                        </div>
+                
+                
+
+
+
+
+                    <div class="form-group">
+                    <div class="col-md-2 col-sm-offset-3">
+                        <button type="submit" class="btn btn-info">Submit</button>
+                    </div>
+                </div>
+
+<br>
+<br>
+
+{{prediction_text}}
+
+
+<br>
+
+                   </div>
+            </form> <!-- /form -->
+        </div> <!-- ./container -->
+		
+ </div>
+</div>
+
+</section>
+ <div class="top-bar">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="social">
+            <ul class="social-share">
+              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+              <li><a href="#"><i class="fa fa-skype"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/.container-->
+  </div>
+  <!--/.top-bar-->
+
+  <footer id="footer" class="midnight-blue">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          &copy; AJS. All Rights Reserved.
+          
+        </div>
+        <div class="col-sm-6">
+          <ul class="pull-right">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Faq</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!--/#footer-->
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.prettyPhoto.js"></script>
+  <script src="js/jquery.isotope.min.js"></script>
+  <script src="js/wow.min.js"></script>
+  <script src="js/main.js"></script>
+   <script src = "http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src = "http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script>
+      $(document).ready(function() {
+         function disablePrev() { window.history.forward() }
+         window.onload = disablePrev();
+         window.onpageshow = function(evt) { if (evt.persisted) disableBack() }
+      });
+   </script>
+
+</body>
+
+</html>
+
+
+
