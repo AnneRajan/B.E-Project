@@ -4,24 +4,10 @@ import tensorflow as tf
 import keras
 from keras.models import load_model
 
+model = load_model('Job_Role_model.h5')
+graph = tf.get_default_graph()
 
-def prediction():
-
-    os          = request.form["os"]
-    aoa         = request.form["aoa"]
-    pc          = request.form["pc"]
-    se          = request.form["se"]
-    cn          = request.form["cn"]
-    ma          = request.form["ma"]
-    cs          = request.form["cs"]
-    hac         = request.form["hac"]
-    interest    = request.form["interest"]
-    cert        = request.form["cert"]
-    personality = request.form["personality"]
-    mantech     = request.form["mantech"]
-    leadership  = request.form["leadership"]
-    team        = request.form["team"]
-    selfab      = request.form["selfab"]
+def simulate(os,aoa,pc,se,cn,ma,cs,hac,interest,cert,personality,mantech,leadership,team,selfab):
 
     myu = [77.00318789848731, 76.99831228903614, 77.07569696212026, 77.11301412676585, 76.9541817727216, 77.0150018752344, 77.060320040005, 5.002687835979497]
     sig = [10.071578660726848, 10.098653693844197, 10.137528173238477, 10.088164425588161, 10.018397202418788, 10.18533143324003, 10.095941558583263, 2.582645138598079]
@@ -126,27 +112,20 @@ def prediction():
         result = np.where(y == np.amax(y))
         print(result[0])
 
-    print("done1")
-
-
-
-#Here i am printing this on the terminal but u have to put it like this on the website
-
     if result[1]==[0]:
-        return render_template('index.html', prediction_text='Business Intelligence')
-        print('Business Intelligence Analyst')
+        results = 'Business Intelligence Analyst'
     elif result[1]==[1]:
-        return render_template('index.html', prediction_text='Database Administrator')
-        print('Database Administrator')
+        results = 'Database Administrator'
     elif result[1]==[2]:
-        return render_template('index.html', prediction_text='Project Manager')
-        print('Project Manager')
+        results = 'Project Manager'
     elif result[1]==[3]:
-        return render_template('index.html', prediction_text='Security Administrator')
-        print('Security Administrator')
+        results = 'Security Administrator'
     elif result[1]==[4]:
-        return render_template('index.html', prediction_text='Software Developer')
-        print('Software Developer')
+        results = 'Software Developer'
     else:
-        return render_template('index.html', prediction_text='Technical Support')
-        print('Technical Support')
+        results = 'Technical Support'
+    print(results)
+    
+    return {results:results}
+
+    

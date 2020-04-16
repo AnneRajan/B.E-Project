@@ -101,6 +101,7 @@ app.get('/jobprofile', (req, res)=>{
 })
 
 app.post('/posts/jobprofile', (request,res)=>{
+    var results;
     os          = request.body.os
     aoa         = request.body.aoa
     pc          = request.body.pc
@@ -117,11 +118,11 @@ app.post('/posts/jobprofile', (request,res)=>{
     team        = request.body.team
     selfab      = request.body.selfab
     var input = [os,aoa,pc,se,cn,ma,cs,hac,interest,cert,personality,mantech,leadership,team,selfab]
-    amqp.connect(‘amqp://localhost’, function (err, conn) {
+    amqp.connect('amqp://localhost', function (err, conn) {
     conn.createChannel(function (err, ch) {
-      var simulations = ‘simulations’;
+      var simulations = 'simulations';
       ch.assertQueue(simulations, { durable: false });
-      var results = ‘results’;
+      results = 'results';
       ch.assertQueue(results, { durable: false });
       ch.sendToQueue(simulations, new Buffer(JSON.stringify(input)));
       ch.consume(results, function (msg) {
@@ -130,6 +131,7 @@ app.post('/posts/jobprofile', (request,res)=>{
     });
     setTimeout(function () { conn.close(); }, 500); 
     });
+    console.log(results)
 
 })
 
