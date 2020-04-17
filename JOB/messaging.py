@@ -32,5 +32,5 @@ def callback(ch, method, properties, body):
     channel.basic_publish(exchange='', routing_key='results', body=json.dumps(results, ensure_ascii=False))
     
 # receive message and complete simulation
-channel.basic_consume(callback, queue='simulations', no_ack=True)
+channel.basic_consume('simulations',callback)
 channel.start_consuming()
