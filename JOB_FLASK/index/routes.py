@@ -1,37 +1,19 @@
-from flask import Flask, render_template,flash, url_for, request, session, redirect, jsonify
-#from flask.ext.pymongo import PyMongo
-from flask_pymongo import PyMongo
-#from flask_mongoengine import MongoEngine
-import bcrypt
+import os
+import secrets
+from PIL import Image
+from flask import Flask, render_template, flash, url_for, request, session, redirect, jsonify
+from index.forms import RegistrationForm, LoginForm, UpdateForm
+from index.models import User
+from index import app, db, bcrypt
+from flask_login import login_user, current_user, logout_user, login_required
+
 import numpy as np
-
-
 import tensorflow as tf
 import keras
 from keras.models import load_model
 
-
-
-app = Flask(__name__)
-
-app.config['MONGO_DBNAME'] = 'jobprofile'
-app.config['MONGO_URI'] = 'mongodb://localhost:27017/jobprofile'
-
-
-
-
 model = load_model('Job_Role_model.h5')
 graph = tf.get_default_graph()
-
-'''
-import pickle
-model = pickle.load(open('Job_Role_Pickle.sav', 'rb'))
-
-'''
-
-
-#mongo = MongoEngine(app)
-mongo = PyMongo(app)
 
 @app.route("/")
 def home():
@@ -48,46 +30,76 @@ def main():
 def resume():
     return render_template('resume.html')
 
-
-@app.route('/register', methods=['POST', 'GET'])
+@app.route("/register", methods=['GET', 'POST'])
 def register():
-     
-     if request.method == 'POST':
-        users = mongo.db.users
-        existing_user = users.find_one({'email' : request.form['email']})
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        user = User(firstname = form.firstname.data, lastname = form.lastname.data, college = form.college.data, email=form.email.data, password=hashed_password)
+        db.session.add(user)
+        db.session.commit()
+        name = form.firstname.data
+        s    = 'Account created for ' + name + ' successfully !'
+        flash(s,'success')
+        return redirect(url_for('login'))
+    return render_template('register.html', form=form)
 
-        if existing_user is None:
-            hashpass = bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt())
-            users.insert({'first_name' : request.form['first_name'], 
-                          'last_name' : request.form['last_name'], 
-                          'company' : request.form['company'], 
-                          'email' : request.form['email'], 
-                          
-                          'pass' : hashpass
-                      })
-            session['email'] = request.form['email']
-            flash('Your account has been created! You are now able to log in', 'success')
-       
-            return redirect(url_for('signup'))
-        
-        return 'That email ID already exists!'
-
-    
-     return render_template('register.html')
-
-
-@app.route("/login",methods=['GET','POST'])
+@app.route("/login", methods=['GET', 'POST'])
 def login():
-    users = mongo.db.users
-    login_user = users.find_one({'name' : request.form['email']})
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email = form.email.data).first()
+        if user and bcrypt.check_password_hash(user.password, form.password.data):
+            login_user(user, remember = form.remember.data)
+            next_page = request.args.get('next')
+            return redirect(next_page) if next_page else redirect(url_for('home'))
+        else:
+            flash('Login Unsuccessful. Please check email and password.','danger')
+    return render_template('login.html', form=form)
 
-    if login_user:
-        if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
-            session['email'] = request.form['email']
-            return redirect(url_for('index'))
+@app.route("/logout", methods=['GET', 'POST'])
+def logout():
+    logout_user()
+    return redirect(url_for('home'))
 
-    return 'Invalid username/password combination'
+def save_picture(form_picture):
+    random_hex   = secrets.token_hex(8)
+    _, f_ext     = os.path.splitext(form_picture.filename)
+    picture_fn   = random_hex + f_ext
+    picture_path = os.path.join(app.root_path, 'static/profile_pics', picture_fn)
+    output_size  = (125,125)
+    i            = Image.open(form_picture)
+    i.thumbnail(output_size)
+    i.save(picture_path)
 
+    return picture_fn
+
+@app.route("/account", methods=['GET', 'POST'])
+@login_required
+def account():
+    form = UpdateForm()
+    if form.validate_on_submit():
+        if form.picture.data :
+            picture_file = save_picture(form.picture.data)
+            current_user.image_file = picture_file
+        current_user.firstname = form.firstname.data
+        current_user.lastname  = form.lastname.data
+        current_user.college   = form.college.data
+        current_user.email     = form.email.data
+        db.session.commit()
+        flash('Your account has been updated!', 'success')
+        return redirect(url_for('account'))
+    elif request.method == 'GET':
+        form.firstname.data = current_user.firstname
+        form.lastname.data = current_user.lastname
+        form.college.data = current_user.college
+        form.email.data = current_user.email
+    img_file = url_for('static', filename='profile_pics/' + current_user.image_file)
+    return render_template('account.html', img_file=img_file, form=form)
 
 @app.route("/jobprofile")
 def jobprofile():
@@ -217,32 +229,29 @@ def prediction():
 
     print("done1")
 
-
-
-#Here i am printing this on the terminal but u have to put it like this on the website
-
     if result[1]==[0]:
-        return render_template('jobprofile.html', prediction_text='Business Intelligence')
         print('Business Intelligence Analyst')
+        return render_template('jobprofile.html', prediction_text='Business Intelligence')
+        
     elif result[1]==[1]:
-        return render_template('jobprofile.html', prediction_text='Database Administrator')
         print('Database Administrator')
+        return render_template('jobprofile.html', prediction_text='Database Administrator')
+        
     elif result[1]==[2]:
-        return render_template('jobprofile.html', prediction_text='Project Manager')
         print('Project Manager')
+        return render_template('jobprofile.html', prediction_text='Project Manager')
+        
     elif result[1]==[3]:
-        return render_template('jobprofile.html', prediction_text='Security Administrator')
         print('Security Administrator')
+        return render_template('jobprofile.html', prediction_text='Security Administrator')
+        
     elif result[1]==[4]:
-        return render_template('jobprofile.html', prediction_text='Software Developer')
         print('Software Developer')
+        return render_template('jobprofile.html', prediction_text='Software Developer')
+        
     else:
-        return render_template('jobprofile.html', prediction_text='Technical Support')
         print('Technical Support')
+        return render_template('jobprofile.html', prediction_text='Technical Support')
+        
 
     print("done2")
-
-    
-if __name__=='__main__':
-    app.secret_key = 'mysecret'
-    app.run(debug=True)
