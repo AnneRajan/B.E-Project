@@ -1,10 +1,9 @@
 import numpy as np
+import pickle
 
 import tensorflow as tf
-import keras
-from keras.models import load_model
 
-model = load_model('Job_Role_model.h5')
+model = pickle.load(open('Job_Role_Pickle.sav', 'rb'))
 graph = tf.get_default_graph()
 
 def simulate(os,aoa,pc,se,cn,ma,cs,hac,interest,cert,personality,mantech,leadership,team,selfab):
