@@ -6,11 +6,13 @@ from index.forms import RegistrationForm, LoginForm, UpdateForm
 from index.models import User
 from index import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
-
+from tensorflow.keras.optimizers import Adam
 import numpy as np
 import tensorflow as tf
 import keras
 from keras.models import load_model
+
+
 
 model = load_model('Job_Role_model.h5')
 graph = tf.get_default_graph()

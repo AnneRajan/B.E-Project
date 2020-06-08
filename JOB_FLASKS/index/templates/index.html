@@ -8,15 +8,14 @@
   <title>JOB-ROLE-PREDICTION</title>
 
   <!-- Bootstrap -->
-  <link href="{{ url_for('static', filename='/css/bootstrap.min.css')}}" rel="stylesheet">
-  <link rel="stylesheet" href="{{ url_for('static', filename='/css/font-awesome.min.css')}}">
-  <link href="{{ url_for('static', filename='/css/animate.min.css')}}" rel="stylesheet">
-  <link href="{{ url_for('static', filename='/css/prettyPhoto.css')}}" rel="stylesheet">
-  <link href="{{ url_for('static', filename='/css/style.css')}}" rel="stylesheet">
-  <link href="{{ url_for('static', filename='/css/responsive.css')}}" rel="stylesheet">
+  <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/font-awesome.min.css')}}">
+  <link href="{{url_for('static', filename='css/animate.min.css')}}" rel="stylesheet">
+  <link href="{{url_for('static', filename='css/prettyPhoto.css')}}" rel="stylesheet">
+  <link href="{{url_for('static', filename='css/style.css')}}" rel="stylesheet">
+  <link href="{{url_for('static', filename='css/responsive.css')}}" rel="stylesheet">
 
 </head>
-
 
 <body class="homepage">
   <header id="header">
@@ -26,28 +25,30 @@
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
-                        
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
                     </button>
           <a class="navbar-brand" href="/">Find Better..</a>
         </div>
 
         <div class="collapse navbar-collapse navbar-right">
           <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav">
             <li class="active"><a href="/">HOME</a></li>
                     {% if current_user.is_authenticated %}
                     <li class="nav-item " >
-                        <a class="nav-link" href="{{ url_for('account') }}">Account <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ url_for('account') }}">ACCOUNT <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item " >
-                        <a class="nav-link" href="{{ url_for('logout') }}">Logout <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ url_for('logout') }}">LOGOUT <span class="sr-only">(current)</span></a>
                     </li>
                     
                     {% else %}
                     <li class="nav-item " >
-                        <a class="nav-link" href="{{ url_for('login') }}">Login <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ url_for('login') }}">LOGIN <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item " >
-                        <a class="nav-link" href="{{ url_for('register') }}">Register <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ url_for('register') }}">REGISTER <span class="sr-only">(current)</span></a>
                     </li>
                     {% endif %}
             
